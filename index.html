@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>             
+  <script type="module" src="/static/app.js"></script>
+  
+  <title>uchina</title>
+</head>
+<body>
+  <main class="layout">
+    <select id="radicalSelect">
+        <option value="">Выбрать</option>
+    </select>
+
+
+    <div class="top-area">
+
+      <div class="upper-block" id="upper-block">
+        <div class="pinyin" id="pinyin"></div>
+        <div class="translation" id="translation"></div>
+      </div>
+    </div>
+
+    <div class="lower-block" id="character-target-div"></div>
+  </main>
+</body>
+</html>

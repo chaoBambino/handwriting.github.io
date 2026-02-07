@@ -1,0 +1,115 @@
+:root{
+  --side-gap: 5vw; /* отступ слева/справа и снизу у нижнего блока */
+  --lower-bottom-gap: 5vw; /* отступ снизу для нижнего блока */
+  --radius: 12px;
+  --upper-bg: #ffffff;
+  --lower-bg: #ffffff;
+  --body-bg: #f6f5f3;
+  --border: rgba(0,0,0,0.08);
+  --text-color: #111;
+  --translation-color: rgba(0,0,0,0.7);
+  --box-shadow: rgba(0,0,0,0.04);
+}
+
+#radicalSelect {
+  border-radius:var(--radius);
+  border:1px solid var(--body-bg);
+  background: var(--body-bg);
+  color:var(--upper-bg);
+  padding:14px 18px;
+  font-size: 30px;
+  outline: none;
+
+}
+#radicalSelect:focus {
+  border-radius:var(--radius);
+  border:1px solid var(--body-bg);
+  background: var(--body-bg);
+  color:var(--upper-bg);
+  padding:14px 18px;
+  font-size: 30px;
+  outline: none;
+}
+
+
+
+/* Сброс минимальный */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,#root{height:100%}
+body{
+  min-height:100vh;
+  background: var(--body-bg);
+  color:var(--text-color);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Контейнер вертикальный. Верхняя область занимает всё доступное пространство,
+   нижний блок расположится у низа с отступами слева/справа/снизу = 5vw */
+.layout{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  padding-left:var(--side-gap);
+  padding-right:var(--side-gap);
+  padding-bottom:var(--lower-bottom-gap);
+}
+
+/* Верхняя область — занимает всё свободное место над нижним блоком,
+   и центрирует верхний блок по вертикали и горизонтали внутри себя */
+.top-area{
+  flex:1 1 auto;
+  display:flex;
+  align-items:center;   /* вертикальное выравнивание по центру */
+  justify-content:right; /* горизонтальное центрирование */
+}
+
+/* Верхний блок: две строки (пиньинь и перевод) */
+.upper-block{
+  width:100%;
+  max-width:700px;
+  background:var(--upper-bg);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  padding:14px 18px;
+
+  box-shadow: 0 6px 18px var(--box-shadow);
+}
+
+/* Отдельные строки внутри верхнего блока */
+.upper-block .pinyin{
+  margin-right: 15%;
+  text-align: right;
+
+  font-size:32px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.upper-block .translation{
+  font-size: 40px;
+  color: var(--translation-color);
+}
+
+/* Нижний блок: закреплён снизу благодаря тому, что top-area растягивается.
+   Имеет такие же боковые отступы как у layout (5vw) и отступ снизу 5vw */
+.lower-block{
+  background:var(--lower-bg);
+  border-radius:calc(var(--radius) * 1.25);
+  border:1px solid var(--border);
+  width:100%;
+  max-width:520px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:18px;
+  text-align:center;
+  font-size:5.5rem; /* крупный иероглиф */
+  line-height:1;
+  box-shadow: 0 8px 24px var(--box-shadow);
+}
+
+/* Адаптивность: на очень маленьких экранах уменьшить символ */
+@media (max-width:360px){
+  .lower-block{ font-size:4rem; padding:14px }
+  .upper-block{ padding:12px 14px }
+}
