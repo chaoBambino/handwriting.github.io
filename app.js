@@ -121,13 +121,13 @@ select.addEventListener("change", () => {
                     writer.quiz({   
                                     onComplete() {
                                         nextCard();
-                                        i=i+1
+                  
                                     }
                                 });
                 }
 
   function nextCard() { 
-                    // i = (i + 1) % radicals.length;
+                    i=i+1;
                     loadChar();
                     //updateTitles(rads_simplified[i]["pinyin"], translations[i+1]);
 
