@@ -10,11 +10,10 @@ async function updateTitles(pinyin, translation) {
 
 async function init() {
   const [
-    rads_traditional,
+    // rads_traditional,
     rads_simplified,
     translations,
   ] = await Promise.all([
-    loadJSON("./rads_traditional.json"),
     loadJSON("./rads_simplified.json"),
     loadJSON("./translations.json"),
   ]);
@@ -79,10 +78,10 @@ if (theme && theme.bg_color) {
 const select = document.getElementById("radicalSelect");
 
 
-for (const el of rads_traditional) {
+for (const el of rads_simplified) {
   const option = document.createElement("option");
   option.value = el.id;
-  option.textContent = el.text;
+  option.textContent = el.radical;
   select.appendChild(option);
 }
 
@@ -104,7 +103,9 @@ select.addEventListener("change", () => {
                     // i = (i + 1) % radicals.length;
                     updateTitles(rads_simplified[i]["pinyin"], translations[i+1]);
 
-                    writer = HanziWriter.create('character-target-div', rads_traditional[i]["text"], {
+                    // writer = HanziWriter.create('character-target-div', rads_traditional[i]["text"], {
+                    writer = HanziWriter.create('character-target-div', rads_simplified[i]["radical"], {
+
                         width: size,
                         height: size,
                         leniency: 1.2,
